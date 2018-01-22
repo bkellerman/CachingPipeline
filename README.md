@@ -6,3 +6,7 @@ Unlike the Pipeline memory options, CachingPipeline only caches the final output
 
 
 The transformed array is saved using a hash of the Pipeline params and numpy array input.  If any of the Transformer params or numpy input changes, a new cache will be used/checked.
+
+TODO:
+    Make it work with Sklearn's GridSearchCV and RandomizedSearchCV 
+
