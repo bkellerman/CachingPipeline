@@ -1,10 +1,12 @@
 # SKCachingPipeline
 
-The module wraps `sklearn.pipeline.Pipeline` and provides caching of transformed numpy arrays.  It is different from the `memory` parameter of `Pipeline`, which only caches the fitted tranformers.  When a `Pipeline` has transformers with computationally expensive transforms(), this module can significantly reduce total `Pipeline` `fit()` time after the initial transform has been cached.
+The module wraps `sklearn.pipeline.Pipeline` and provides caching of transformed numpy arrays.  It is different from the `memory` parameter of `Pipeline`, which only caches the fitted tranformers.  When a `Pipeline` has transformers with computationally expensive transforms(), this module can significantly reduce total `Pipeline` `fit()` time after the initial transform has been cached.  This can be useful when doing extensive hyper-parameter search where you are trying many final `Estimator` hyper-parameters for the same transformed data.
 
 `CachingPipeline` only caches the final output of all transformers in the `Pipeline`.   It will not cache tranformed data for each transformer.
 
 The transformed array is saved using a hash of the `Pipeline` params and numpy array input.  If any of the transformer params or numpy input changes, a new cache will be used/checked.
+
+To Do: Support `SKCachingPipeline` being passed to `sklearn.model_selection.RandomizedSearchCV`
 
 Example
 -------
